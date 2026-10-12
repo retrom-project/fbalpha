@@ -24,3 +24,8 @@ Requires Docker, Python 3, a C compiler, Node 24 and 7-Zip. Compilation is expli
 and uses the pinned SDK image. `.cache/` is local build state. The output archive
 has normalized timestamps and file permissions; repeat builds must match its
 complete SHA-256. Core and bundled frontend license notices ship in `LICENSE`.
+
+The browser core reports the upstream version without a checkout-dependent Git
+suffix. `GIT_VERSION` is explicitly empty so an ordinary clone and an isolated
+worktree produce the same bytes. Exact source identity stays in the candidate
+and release descriptors.

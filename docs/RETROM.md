@@ -20,10 +20,12 @@ The core supplies libretro serialization. Runtime owns input mapping, whole-file
 persistent caching, public checkpoint compression and lifecycle cleanup.
 
 Build: `.github/rpg-runtime/build-candidate.sh /absolute/empty/output`.
-Requires Docker, Python 3, a C compiler, Node 24 and 7-Zip. Compilation is explicit
+Requires Docker, Python 3, a C compiler and Node 24. Compilation is explicit
 and uses the pinned SDK image. `.cache/` is local build state. The output archive
 has normalized timestamps and file permissions; repeat builds must match its
 complete SHA-256. Core and bundled frontend license notices ship in `LICENSE`.
+Packaging downloads SHA-256-pinned 7-Zip 25.01 for Linux x64 and fixes the
+compression thread count; the host system archive tool is not used.
 
 The browser core reports the upstream version without a checkout-dependent Git
 suffix. `GIT_VERSION` is explicitly empty so an ordinary clone and an isolated

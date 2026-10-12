@@ -17,7 +17,7 @@ with tempfile.TemporaryDirectory(dir=root/'.cache',prefix='package-') as temp:
  shutil.copyfile(root/'config/core.json',stage/'core.json')
  (stage/'license.txt').write_bytes(notices)
  for p in stage.iterdir():p.chmod(0o644);os.utime(p,(0,0))
- subprocess.run(['7z','a','-mtm=off','-mta=off','-mtc=off','-bd','-bso0','-bsp0','-t7z',str(output/'fbalpha-wasm.data'),*sorted(p.name for p in stage.iterdir())],cwd=stage,check=True)
+ subprocess.run([str(root/'.cache/7zz'),'a','-mmt=1','-mtm=off','-mta=off','-mtc=off','-bd','-bso0','-bsp0','-t7z',str(output/'fbalpha-wasm.data'),*sorted(p.name for p in stage.iterdir())],cwd=stage,check=True)
 (output/'LICENSE').write_bytes(notices)
 timestamp=datetime.fromtimestamp(1788524869,timezone.utc).isoformat()
 (output/'fbalpha.json').write_text(json.dumps({'core':core,'buildStart':timestamp,'buildEnd':timestamp,'options':json.loads((root/'config/core.json').read_text())['options']})+'\n')

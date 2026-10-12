@@ -99,6 +99,8 @@ static void ReplaceGreaterThan(char *szBuffer, char *szGameName)
 
 INT32 write_datfile(INT32 bType, FILE* fDat)
 {
+	const bool requiredOnly = (bType & RETROM_DAT_REQUIRED_ONLY) != 0;
+	bType &= ~RETROM_DAT_REQUIRED_ONLY;
 	INT32 nRet=0;
 	UINT32 nOldSelect=0;
 	UINT32 nGameSelect=0;
@@ -375,7 +377,7 @@ INT32 write_datfile(INT32 bType, FILE* fDat)
 				nRet=BurnDrvGetRomInfo(&ri,i);
 				nRet+=BurnDrvGetRomName(&szPossibleName,i,0);
 
-				if (ri.nLen==0) continue;
+				if (ri.nLen==0 || (requiredOnly && (ri.nType & BRF_OPT))) continue;
 
 				if (nRet==0)
 				{
@@ -618,7 +620,7 @@ INT32 write_datfile(INT32 bType, FILE* fDat)
 				nRet=BurnDrvGetRomInfo(&ri,i);
 				nRet+=BurnDrvGetRomName(&szPossibleName,i,0);
 
-				if (ri.nLen==0) continue;
+				if (ri.nLen==0 || (requiredOnly && (ri.nType & BRF_OPT))) continue;
 
 				if (nRet==0) {
 					char szPossibleNameBuffer[255];

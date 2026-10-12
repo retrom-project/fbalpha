@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "forkRepository": "https://github.com/retrom-project/fbalpha",
+  "defaultBranch": "retrom/gb25b724ba204",
+  "upstreamMirrorBranch": "master",
+  "upstreams": [
+    {
+      "role": "core",
+      "repository": "https://github.com/libretro/beetle-finalarcade2019",
+      "refType": "COMMIT",
+      "ref": "b25b724ba2046f00f6615a6ffd4eed85a7e367a0",
+      "commit": "b25b724ba2046f00f6615a6ffd4eed85a7e367a0"
+    }
+  ],
+  "releaseTagPattern": "^retrom-core-gb25b724ba204-r[1-9][0-9]*(-rc\\.[1-9][0-9]*)?$",
+  "adapterAbi": "emulatorjs-content-result-v1",
+  "releaseAssets": [
+    "fbalpha-wasm.data",
+    "fbalpha.json",
+    "LICENSE",
+    "fbalpha-arcade.dat",
+    "fbalpha-content-pair.json",
+    "rpg-runtime-release.json"
+  ]
+}

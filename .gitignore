@@ -7,3 +7,7 @@
 *.manifest
 /nul
 *.a
+
+/.cache/
+*.bc
+__pycache__/

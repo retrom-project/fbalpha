@@ -1,0 +1,15 @@
+{
+  "name": "fbalpha",
+  "extensions": [
+    "zip"
+  ],
+  "makeoptions": {
+    "arguments": [],
+    "buildpath": "./",
+    "makescript": "makefile.libretro"
+  },
+  "options": {},
+  "save": false,
+  "license": "src/license.txt",
+  "repo": "https://github.com/retrom-project/fbalpha"
+}

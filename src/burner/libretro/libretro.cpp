@@ -1,3 +1,6 @@
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 #include <vector>
 #include <string>
 #include <sys/types.h>
@@ -1752,3 +1755,15 @@ char* DecorateGameName(UINT32 nBurnDrv)
 	nBurnDrvActive = nOldBurnDrv;
 	return szDecoratedName;
 }
+
+#ifdef __EMSCRIPTEN__
+// Export the same compiled driver table used by retro_load_game. Optional ROMs
+// are omitted so browser review checks the core's mandatory content contract.
+extern "C" EMSCRIPTEN_KEEPALIVE int retrom_export_arcade_dat()
+{
+    if (BurnLibInit() != 0) return 1;
+    const int result = create_datfile((TCHAR*)"/fbalpha-arcade.dat", DAT_ARCADE_ONLY | RETROM_DAT_REQUIRED_ONLY);
+    BurnLibExit();
+    return result;
+}
+#endif
